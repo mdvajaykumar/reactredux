@@ -2,12 +2,22 @@ import { createStore } from "redux";
 
 const initState = {
   message: "hello AjayKumar",
-  counter: 0,
+  counter: 100,
   list: [],
 };
 
 function AppReducer(state = initState, action) {
-  return state;
+  switch (action.type) {
+    case "Inc":
+      return { ...state, counter: state.counter + 1 };
+
+    case "Post_Tweet":
+      const newList = [action.payload, ...state.list];
+      return { ...state, list: newList };
+
+    default:
+      return state;
+  }
 }
 
 export const store = createStore(AppReducer);
