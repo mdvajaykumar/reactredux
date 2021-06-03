@@ -7,7 +7,7 @@ export function ContactUs() {
       <div>Contact Us</div>
       <div className="bg-primary">
         <h1>{state.message}</h1>
-        <h2>{state.counter}</h2>
+        <h2>{state.cr.counter}</h2>
       </div>
     </div>
   );

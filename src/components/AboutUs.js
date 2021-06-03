@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { addTweet, AddTweet } from "../redux/action/AppAction";
 
 export function AboutUs() {
   const [tinput, setTinput] = useState("");
@@ -11,7 +12,7 @@ export function AboutUs() {
 
   const updateValue = (e) => setTinput(e.target.value);
   const addPost = () => {
-    dispatch({ type: "Post_Tweet", payload: tinput });
+    dispatch(addTweet(tinput));
     setTinput("");
   };
 
@@ -33,7 +34,7 @@ export function AboutUs() {
           onClick={() => addPost()}
         />
       </div>
-      {state.list.map((item, index) => (
+      {state.tweet.list.map((item, index) => (
         <h4 key={index}>{item}</h4>
       ))}
     </div>

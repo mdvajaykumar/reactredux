@@ -1,23 +1,13 @@
 import { createStore } from "redux";
+import { Inc, Tweet } from "./action/AppActionType";
 
-const initState = {
-  message: "hello AjayKumar",
-  counter: 100,
-  list: [],
-};
+import { tweetReducer } from "./reducers/tweetReducer";
+import { counterReducer } from "./reducers/counterReducer";
+import { combineReducers } from "redux";
 
-function AppReducer(state = initState, action) {
-  switch (action.type) {
-    case "Inc":
-      return { ...state, counter: state.counter + 1 };
+const rootReducer = combineReducers({
+  cr: counterReducer,
+  tweet: tweetReducer,
+});
 
-    case "Post_Tweet":
-      const newList = [action.payload, ...state.list];
-      return { ...state, list: newList };
-
-    default:
-      return state;
-  }
-}
-
-export const store = createStore(AppReducer);
+export const store = createStore(rootReducer);
